@@ -3,15 +3,14 @@ import React, { useEffect } from "react";
 import SingleProduct from "@/components/SingleProduct";
 import { useParams } from "next/navigation";
 import { useSupabase } from "@/hooks/useSupabase";
-const page = () => {
+const Page = () => {
   const { id } = useParams();
   const { singleProduct, getSingleProduct } = useSupabase();
 
   useEffect(() => {
     getSingleProduct(Number(id));
-  }, []);
+  }, [id,getSingleProduct]);
 
-  console.log(singleProduct);
   return (
     <div>
       <SingleProduct singleProduct={singleProduct} />
@@ -19,4 +18,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
